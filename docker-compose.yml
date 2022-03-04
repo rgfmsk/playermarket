@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  playermarketdb:
+    image: postgres:10.7-alpine
+    container_name: playermarketdb
+    environment:
+      - POSTGRES_DB=playermarket
+      - POSTGRES_USER=dbadmin
+      - POSTGRES_PASSWORD=dbadmin
+    ports:
+      - "5432:5432"
+
+#  eurekaserver:
+#    container_name: eurekaserver
+#    depends_on:
+#      - playermarketdb
+#    restart: on-failure
+#    build:
+#      context: eurekaserver/
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8761:8761"
+#
+#  configserver:
+#    container_name: configserver
+#    depends_on:
+#      - eurekaserver
+#    restart: on-failure
+#    build:
+#      context: configserver/
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8762:8762"
+#
+#  teamservice:
+#    container_name: teamservice
+#    depends_on:
+#      - configserver
+#      - eurekaserver
+#      - playermarketdb
+#    restart: on-failure
+#    build:
+#      context: teamservice/
+#      dockerfile: Dockerfile
+#    ports:
+#      - "9090:9090"
